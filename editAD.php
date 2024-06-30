@@ -2,16 +2,16 @@ username = '$user',
 
 <?php include 'koneksi.php'; 
 
-$admin = mysqli_query($konek , "SELECT * FROM admin WHERE idadmin = '$_GET[id]'");
-$ad = mysqli_fetch_assoc($admin);
+// $admin = mysqli_query($konek , "SELECT * FROM admin WHERE idadmin = '$_GET[id]'");
+// $ad = mysqli_fetch_assoc($admin);
 
-// // Menggunakan prepared statements untuk mengamankan query
-// $stmt = $konek->prepare("SELECT * FROM admin WHERE idadmin = ?");
-// $stmt->bind_param("i", $id); // "i" menandakan bahwa parameter adalah integer
-// $stmt->execute();
-// $result = $stmt->get_result();
+// Menggunakan prepared statements untuk mengamankan query
+$stmt = $konek->prepare("SELECT * FROM admin WHERE idadmin = ?");
+$stmt->bind_param("i", $id); // "i" menandakan bahwa parameter adalah integer
+$stmt->execute();
+$result = $stmt->get_result();
 
-// $ad = $result->fetch_assoc();
+$ad = $result->fetch_assoc();
 
 include 'headerAD.php';
 ?>

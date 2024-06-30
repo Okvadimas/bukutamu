@@ -38,7 +38,7 @@ if (isset($_SESSION['login']) ){
 	echo "
 	<script>
 	alert('anda tidak memiliki akses dihalaman ini');
-	document.location.href = 'loginAD.php';
+	document.location.href = 'index.php';
 	</script>
 	";
 }

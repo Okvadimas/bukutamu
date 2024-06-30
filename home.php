@@ -45,7 +45,7 @@
 	<table align="center">
 		<tr>
 			<td>
-				<a class="btn btn-primary"  href="loginAD.php">LOGIN ADMIN</a>
+				<a class="btn btn-primary"  href="index.php">LOGIN ADMIN</a>
 				<a class="btn btn-primary" href="tampilawal.php">BUKU TAMU</a>
 			</td>
 		</tr>

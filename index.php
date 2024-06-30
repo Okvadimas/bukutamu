@@ -16,17 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$error = true;
 	} else {
 
-		$data = mysqli_query($konek, "SELECT * FROM admin WHERE username ='$user' AND password = '$p'");
-		$jml = mysqli_num_rows($data);
-		$dta = mysqli_fetch_assoc($data);
+		// var_dump("SELECT * FROM admin WHERE username ='$user' AND password = '$p'");die;
 
-        // // Menggunakan prepared statements untuk keamanan
-        // $stmt = $konek->prepare("SELECT * FROM admin WHERE username = ? AND password = ?");
-        // $stmt->bind_param("ss", $user, $p);
-        // $stmt->execute();
-        // $result = $stmt->get_result();
-        // $jml = $result->num_rows;
-        // $dta = $result->fetch_assoc();
+		// $data = mysqli_query($konek ,"SELECT * FROM admin WHERE username ='$user' AND password = '$p'");
+
+		// $jml = mysqli_num_rows($data);
+		// $dta = mysqli_fetch_assoc($data);
+
+        // Menggunakan prepared statements untuk keamanan
+        $stmt = $konek->prepare("SELECT * FROM admin WHERE username = ? AND password = ?");
+        $stmt->bind_param("ss", $user, $p);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $jml = $result->num_rows;
+        $dta = $result->fetch_assoc();
 
 		if ($jml > 0) {
 			session_start();
@@ -39,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			echo "
 			<script>
 			alert('Username or password you entered is incorrect');
-			document.location.href = 'loginAD.php';
+			document.location.href = 'index.php';
 			</script>
 			";
 		}
